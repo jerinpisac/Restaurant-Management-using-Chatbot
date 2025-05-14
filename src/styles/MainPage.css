@@ -1,0 +1,182 @@
+.container{
+    display: flex;
+    margin-top: 150px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 200px;
+    color: #2a1308;
+}
+
+.left{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-wrapper {
+    width: 250px;
+    height: 250px;
+    perspective: 1000px;
+}
+
+.flip-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: pulse 10s linear infinite;
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    object-fit: contain;
+    padding: 20px;
+    border: 10px solid #2a1308;
+    border-radius: 50%;
+}
+
+.front-face {
+    transform: rotateY(0deg);
+    z-index: 2;
+}
+
+.back-face {
+    transform: rotateY(180deg);
+}
+
+
+@keyframes pulse {
+    0% {
+        transform: translateY(0) rotateY(0deg);
+    }
+    50% {
+        transform: translateY(-50px) rotateY(360deg);
+    }
+    100% {
+        transform: translateY(0) rotateY(0deg);
+    }
+    
+}
+
+.right {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 90px;
+  /* color: #333; */
+  border-radius: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  animation: fadeIn 1s ease-in;
+}
+
+/* Heading Styling */
+h2 {
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    font-size: 3rem;
+    margin: 0;
+    padding: 0;
+}
+
+.buttons{
+    margin-top: 20px;
+}
+
+i{
+    margin-left: 10px;
+    transition: 300ms ease-in-out;
+}
+
+.first-btn:hover i,
+.second-btn:hover i{
+    transform: translateX(10px);
+}
+
+.first-btn{
+    background: #2a1308;
+    padding: 10px 30px;
+    border-radius: 20px;
+    color: #efe4ca;
+    cursor: pointer;
+    font-weight: 600;
+    position: relative;
+    z-index: 0;
+    border: 2px solid #2a1308;
+    margin-right: 30px;
+}
+
+.first-btn::after{
+    content: '';
+    width: 0;
+    height: 100%;
+    background: #efe4ca;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    border-radius: 20px;
+    transition: 0.3s ease-in-out;
+}
+
+.first-btn:hover::after{
+    width: 100%;
+}
+
+.first-btn:hover{
+    color: #2a1308;
+}
+
+.second-btn{
+    background: #2a1308;
+    padding: 10px 30px;
+    border-radius: 20px;
+    color: #efe4ca;
+    cursor: pointer;
+    font-weight: 600;
+    position: relative;
+    z-index: 0;
+    border: 2px solid #2a1308;
+}
+
+.second-btn::after{
+    content: '';
+    width: 0;
+    height: 100%;
+    background: #efe4ca;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    border-radius: 20px;
+    transition: 0.3s ease-in-out;
+}
+
+.second-btn:hover::after{
+    width: 100%;
+}
+
+.second-btn:hover{
+    color: #2a1308;
+}
+
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
