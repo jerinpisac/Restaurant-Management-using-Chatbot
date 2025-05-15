@@ -7,6 +7,23 @@ function MenuPage({ props, ref }) {
         <h1>Menu</h1>
         <div className="menu-grid">
             <div className="menu-card">
+                <h2>Soups</h2>
+                <ul>
+                    <li>
+                        <div>Sweet Corn Soup</div>
+                        <div className='price'>₹130</div>
+                    </li>
+                    <li>
+                        <div>Tomato Soup</div>
+                        <div className="price">₹130</div>
+                    </li>
+                    <li>
+                        <div>Hot n Sour Soup</div>
+                        <div className="price">₹180</div>
+                    </li>
+                </ul>
+            </div>
+            <div className="menu-card">
                 <h2>Starters</h2>
                 <ul>
                     <li>
