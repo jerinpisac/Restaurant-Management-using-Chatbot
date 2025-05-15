@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar'
 import MainPage from '../components/MainPage'
 import AboutPage from '../components/AboutPage'
 import MenuPage from '../components/MenuPage'
+import ContactPage from '../components/ContactPage'
 
 function App() {
   const MainPageRef = useRef(null);
@@ -36,6 +37,7 @@ function App() {
       <MainPage scrollToSection={scrollToSection} ref={MainPageRef} />
       <AboutPage ref={AboutPageRef} />
       <MenuPage ref={MenuRef} />
+      <ContactPage ref={ContactRef} />
     </>
   )
 }
