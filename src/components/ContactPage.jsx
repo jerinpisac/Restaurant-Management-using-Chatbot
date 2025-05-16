@@ -1,30 +1,27 @@
 import { useState } from 'react';
 import '../styles/ContactPage.css'
+import axios from 'axios';
 
 function Contact({ props, ref }) {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState('');
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus('Sending...');
+    setStatus("Sending...");
 
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await res.json();
-      setStatus(data.message);
+      await axios.post("http://localhost:5000/send-email", { name, email, subject, message });
+      setStatus("Email sent successfully!");
+      setName("");
+      setEmail("");
+      setSubject("");
+      setMessage("");
     } catch (error) {
-      console.error(error);
-      setStatus('Something went wrong. Please try again.');
+      setStatus("Failed to send email.");
     }
   };
 
@@ -32,9 +29,10 @@ function Contact({ props, ref }) {
     <div ref={ref} className='contact-container'>
       <h1>Contact Me</h1>
       <form onSubmit={handleSubmit}>
-          <input name="name" placeholder="Your Name" onChange={handleChange} required />
-          <input name="email" type="email" placeholder="Your Email" onChange={handleChange} required />
-          <textarea name="message" placeholder="Your Message" onChange={handleChange} required />
+          <input value={name} placeholder="Your Name" onChange={(e) => setName(e.target.value)} required />
+          <input value={email} type="email" placeholder="Your Email" onChange={(e) => setEmail(e.target.value)} required />
+          <input value={subject} type="text" placeholder="Subject" onChange={(e) => setSubject(e.target.value)} required />
+          <textarea value={message} placeholder="Your Message" onChange={(e) => setMessage(e.target.value)} required />
           <button type="submit">Send</button>
           <p className={(status == "") ? "empty" : "full"}>{status}</p>
       </form>
